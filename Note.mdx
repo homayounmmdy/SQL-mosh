@@ -54,3 +54,29 @@ ORDER BY first_name
 the order of these is matter and we mostly sort first select then from , where and lastly order if we change it  
 
 for example add order at top because there is no data it give us syntax error
+
+## The SELECT Clause
+
+this is return all the columns
+
+```sql
+SELECT * FROM customers
+```
+
+we can custom and only load some specific columns and also build some custom
+
+```sql 
+SELECT
+    first_name ,
+    last_name ,
+    points ,
+    (points + 10) * 100 AS 'discount factor'
+FROM customers
+
+```
+
+with DISTINCT keyboard we can remove the duplicate
+
+```sql 
+SELECT DISTINCT state FROM customers
+```
