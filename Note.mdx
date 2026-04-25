@@ -17,3 +17,40 @@ we have 2 type of data base
 
 > NoSQL systems don't understand SQL
 
+## The SELECT Statement 
+
+the first line use is reading database and in the example below we read all data 
+of customer data 
+
+```sql 
+USE sql_store;
+
+SELECT *
+FROM customers
+```
+
+we also have where that filter and only show matches in this example is only show the customers
+with id of 1
+
+```sql
+USE sql_store;
+
+SELECT *
+FROM customers
+WHERE customer_id = 1;
+```
+
+also we can filter the order and by putting this `--` before thing it will comment that 
+
+```sql 
+USE sql_store;
+
+SELECT *
+FROM customers
+-- WHERE customer_id = 1;
+ORDER BY first_name
+```
+
+the order of these is matter and we mostly sort first select then from , where and lastly order if we change it  
+
+for example add order at top because there is no data it give us syntax error
