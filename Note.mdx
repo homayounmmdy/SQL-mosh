@@ -80,3 +80,36 @@ with DISTINCT keyboard we can remove the duplicate
 ```sql 
 SELECT DISTINCT state FROM customers
 ```
+
+## The WHERE Clause
+
+it check condition if any of the element pass the condition is will return them 
+
+```sql 
+SELECT * FROM customers
+WHERE points > 3000
+```
+
+these are all operation conditions we have 
+
+- > 
+- >= 
+- <
+- <=
+- = 
+- != or <> both mean no equal
+
+here the lower and uppercase doesn't matter 
+
+```sql 
+SELECT * FROM customers
+WHERE state <> 'va'
+```
+
+for year we have year-month-day format
+
+```sql
+SELECT * FROM customers
+WHERE birth_date > '1990-01-01'
+```
+
