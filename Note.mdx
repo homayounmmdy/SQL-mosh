@@ -133,3 +133,27 @@ the order of loading these operator is like this
 
 1. AND
 2. OR
+
+## The IN Operator
+
+this is the dirty way of check to get list of people from 
+'Va' , 'GA' , 'FL' at least one of theme
+
+```sql
+SELECT * FROM customers
+WHERE state = 'VA' OR state = 'GA' OR state = 'FL'
+```
+
+and this is cleaner way 
+
+```sql
+SELECT * FROM customers
+WHERE state IN ('VA' , 'GA' , 'FL')
+```
+
+if we want people outside of these states we can use not like below
+
+```sql
+SELECT * FROM customers
+WHERE state NOT IN  ('VA' , 'GA' , 'FL')
+```
