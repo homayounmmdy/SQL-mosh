@@ -157,3 +157,20 @@ if we want people outside of these states we can use not like below
 SELECT * FROM customers
 WHERE state NOT IN  ('VA' , 'GA' , 'FL')
 ```
+
+## The BETWEEN Operator
+
+for example we want to get list of customer that have score between 1000 and 3000 one 
+way is below 
+
+```sql 
+SELECT * FROM customers
+WHERE points >= 1000 AND points <= 3000
+```
+
+we can rewrite like this 
+
+```sql 
+SELECT * FROM customers
+WHERE points BETWEEN 1000 AND 3000
+```
