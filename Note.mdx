@@ -4,25 +4,25 @@ is a collection of data stored in a format that can easily be accessed.
 
 we send our request into DBMS (Database Management System) it send into database and send us a response.
 
-we have 2 type of data base 
+we have 2 type of data base
 
-- Relational 
+- Relational
 - NoSQL
 
 ## Most popular RDBMS (Relational Database Management System)
 
-- MySQL 
+- MySQL
 - SQL Server
 - Oracle
 
 > NoSQL systems don't understand SQL
 
-## The SELECT Statement 
+## The SELECT Statement
 
-the first line use is reading database and in the example below we read all data 
-of customer data 
+the first line use is reading database and in the example below we read all data
+of customer data
 
-```sql 
+```sql
 USE sql_store;
 
 SELECT *
@@ -40,9 +40,9 @@ FROM customers
 WHERE customer_id = 1;
 ```
 
-also we can filter the order and by putting this `--` before thing it will comment that 
+also we can filter the order and by putting this `--` before thing it will comment that
 
-```sql 
+```sql
 USE sql_store;
 
 SELECT *
@@ -51,7 +51,7 @@ FROM customers
 ORDER BY first_name
 ```
 
-the order of these is matter and we mostly sort first select then from , where and lastly order if we change it  
+the order of these is matter and we mostly sort first select then from , where and lastly order if we change it
 
 for example add order at top because there is no data it give us syntax error
 
@@ -65,7 +65,7 @@ SELECT * FROM customers
 
 we can custom and only load some specific columns and also build some custom
 
-```sql 
+```sql
 SELECT
     first_name ,
     last_name ,
@@ -77,31 +77,31 @@ FROM customers
 
 with DISTINCT keyboard we can remove the duplicate
 
-```sql 
+```sql
 SELECT DISTINCT state FROM customers
 ```
 
 ## The WHERE Clause
 
-it check condition if any of the element pass the condition is will return them 
+it check condition if any of the element pass the condition is will return them
 
-```sql 
+```sql
 SELECT * FROM customers
 WHERE points > 3000
 ```
 
-these are all operation conditions we have 
+these are all operation conditions we have
 
-- > 
-- >= 
+- >
+- > =
 - <
 - <=
-- = 
+- =
 - != or <> both mean no equal
 
-here the lower and uppercase doesn't matter 
+here the lower and uppercase doesn't matter
 
-```sql 
+```sql
 SELECT * FROM customers
 WHERE state <> 'va'
 ```
@@ -113,3 +113,23 @@ SELECT * FROM customers
 WHERE birth_date > '1990-01-01'
 ```
 
+## The AND , OR and NOT operator
+
+AND : Both side must pass the condition
+OR : At least one side of the condition is be true
+NOT : vice versa the condition
+
+```sql
+SELECT * FROM customers
+WHERE birth_date > '1990-01-01' AND points > 1000 AND state = "VA"
+```
+
+```sql
+SELECT * FROM customers
+WHERE NOT (birth_date > '1990-01-01' OR points > 1000)
+```
+
+the order of loading these operator is like this
+
+1. AND
+2. OR
