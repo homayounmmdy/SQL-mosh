@@ -174,3 +174,23 @@ we can rewrite like this
 SELECT * FROM customers
 WHERE points BETWEEN 1000 AND 3000
 ```
+
+## The LIKE Operator
+
+in this operator is show all last that name that start with B and now matter 
+how long is that upper/lower cases dose not matter
+
+```sql
+SELECT * FROM customers
+WHERE last_name LIKE 'b%'
+```
+we also have something like this that say if the last name contain b no matter where
+
+another pattern is under score where for example here if anything has length of 5 that end with y
+
+```sql
+SELECT * FROM customers
+WHERE last_name LIKE '____y'
+```
+
+this is one is little bit old
