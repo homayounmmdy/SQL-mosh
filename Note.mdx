@@ -136,7 +136,7 @@ the order of loading these operator is like this
 
 ## The IN Operator
 
-this is the dirty way of check to get list of people from 
+this is the dirty way of check to get list of people from
 'Va' , 'GA' , 'FL' at least one of theme
 
 ```sql
@@ -144,7 +144,7 @@ SELECT * FROM customers
 WHERE state = 'VA' OR state = 'GA' OR state = 'FL'
 ```
 
-and this is cleaner way 
+and this is cleaner way
 
 ```sql
 SELECT * FROM customers
@@ -160,30 +160,31 @@ WHERE state NOT IN  ('VA' , 'GA' , 'FL')
 
 ## The BETWEEN Operator
 
-for example we want to get list of customer that have score between 1000 and 3000 one 
-way is below 
+for example we want to get list of customer that have score between 1000 and 3000 one
+way is below
 
-```sql 
+```sql
 SELECT * FROM customers
 WHERE points >= 1000 AND points <= 3000
 ```
 
-we can rewrite like this 
+we can rewrite like this
 
-```sql 
+```sql
 SELECT * FROM customers
 WHERE points BETWEEN 1000 AND 3000
 ```
 
 ## The LIKE Operator
 
-in this operator is show all last that name that start with B and now matter 
+in this operator is show all last that name that start with B and now matter
 how long is that upper/lower cases dose not matter
 
 ```sql
 SELECT * FROM customers
 WHERE last_name LIKE 'b%'
 ```
+
 we also have something like this that say if the last name contain b no matter where
 
 another pattern is under score where for example here if anything has length of 5 that end with y
@@ -194,3 +195,48 @@ WHERE last_name LIKE '____y'
 ```
 
 this is one is little bit old
+
+## The REGEXP Operator
+
+this one is use regex it really powerful
+
+- ^ in example the last name must start with field
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP '^field'
+```
+
+- $ to indicate the end of last name end with field
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP 'field$'
+```
+
+- | to indicate two things like field or mac or rose in user last name
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP 'field|mac|rose'
+```
+
+also we can combine multiple character that check last name end with field
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP 'field$|mac|rose'
+```
+
+- [] every character before specific thing for example here every last name
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP '[gim]e'
+```
+also we can something like this a-h which all character from a to ----------
+
+```sql
+SELECT * FROM customers
+WHERE last_name REGEXP '[a-h]e'
+```
