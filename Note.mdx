@@ -234,6 +234,7 @@ WHERE last_name REGEXP 'field$|mac|rose'
 SELECT * FROM customers
 WHERE last_name REGEXP '[gim]e'
 ```
+
 also we can something like this a-h which all character from a to ----------
 
 ```sql
@@ -252,7 +253,7 @@ WHERE phone IS NULL
 
 ## The Order Clause
 
-as default the order by id and DESC is reverse the order 
+as default the order by id and DESC is reverse the order
 
 ```sql
 SELECT * FROM customers
@@ -266,3 +267,22 @@ and if state is same use first_name to order
 SELECT * FROM customers
 ORDER BY state , first_name
 ```
+
+## The LIMIT Clause
+
+for example we have 10 customers in table and we limit more than 10 it will
+show all of them
+
+```sql
+SELECT * FROM customers
+LIMIT  3000
+```
+
+and for example we have pager that show three in each page and we want the third page
+6 is skipping first 6 digits and 3 is mean pick those
+
+```sql
+SELECT * FROM customers
+LIMIT 6,3
+```
+and this will came at the end
