@@ -307,5 +307,16 @@ USE sql_inventory;
 SELECT * FROM sql_store.order_items oi
 JOIN products p
     ON oi.product_id = p.product_id
+```
 
+## Self Joins 
+
+```sql 
+SELECT
+    e.employee_id,
+    e.first_name,
+    m.first_name AS manager
+FROM sql_hr.employees e
+JOIN sql_hr.employees m
+    ON e.reports_to = m.employee_id
 ```
