@@ -285,13 +285,27 @@ and for example we have pager that show three in each page and we want the third
 SELECT * FROM customers
 LIMIT 6,3
 ```
+
 and this will came at the end
 
-## Inner Joins 
+## Inner Joins
 
 ```sql
 SELECT order_id ,o.customer_id, first_name , last_name
 FROM orders o
 JOIN customers c
     ON o.customer_id = c.customer_id
-````
+```
+
+## Joining Across Databases
+
+and we only have to prefix the databases outside of current one
+
+```sql
+USE sql_inventory;
+
+SELECT * FROM sql_store.order_items oi
+JOIN products p
+    ON oi.product_id = p.product_id
+
+```
