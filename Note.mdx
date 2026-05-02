@@ -350,3 +350,14 @@ JOIN order_item_notes oin
     ON oi.order_id = oin.order_Id
     AND oi.product_id = oin.product_id
 ```
+
+## Implicit Join Syntax
+
+do not use this syntax much it case cross join 
+better to use explicit JOIN syntax
+
+```sql 
+SELECT *
+From orders o , customers c
+WHERE o.customer_id = c.customer_id
+```
