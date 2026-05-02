@@ -383,3 +383,21 @@ LEFT JOIN orders o
     ON c.customer_id = o.customer_id
 ORDER BY c.customer_id
 ```
+
+## Outer Join Between Multiply Tables
+
+> as best practice avoid RIGHT JOIN and focus on left JOIN for better visual
+
+```sql 
+SELECT
+    c.customer_id,
+    c.first_name,
+    o.order_id,
+    sh.name AS shipper
+From customers c
+LEFT JOIN orders o
+    ON c.customer_id = o.customer_id
+LEFT JOIN shippers sh
+    ON o.shipper_id = sh.shipper_id
+ORDER BY c.customer_id
+```
