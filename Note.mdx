@@ -361,3 +361,25 @@ SELECT *
 From orders o , customers c
 WHERE o.customer_id = c.customer_id
 ```
+
+## Outer Join 
+
+when ever you write JOIN it mean INNER JOIN but it convert into JOIN
+for Outer Join we have 2 types left and right 
+
+when we use left all of the in this example customers return whether this condition 
+is true or not
+
+when we use right all of the right side of order which is over default and if you want to see 
+all customer with right you need to swap the order 
+
+```sql 
+SELECT
+    c.customer_id,
+    c.first_name,
+    o.order_id
+From customers c
+LEFT JOIN orders o
+    ON c.customer_id = o.customer_id
+ORDER BY c.customer_id
+```
