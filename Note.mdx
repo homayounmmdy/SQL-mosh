@@ -401,3 +401,17 @@ LEFT JOIN shippers sh
     ON o.shipper_id = sh.shipper_id
 ORDER BY c.customer_id
 ```
+
+## Self Outer Joins 
+
+```sql 
+USE sql_hr;
+
+SELECT
+    e.employee_id,
+    e.first_name,
+    m.first_name AS manager
+FROM sql_hr.employees e
+LEFT JOIN sql_hr.employees m
+    ON e.reports_to = m.employee_id
+```
