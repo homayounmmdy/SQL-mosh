@@ -435,3 +435,18 @@ JOIN customers c
 LEFT JOIN shippers sh
     USING (shipper_id)
 ```
+
+## Natural Joins 
+
+this is not used widely just be familiar with it basically combine 
+common things but something produce unexpected results
+
+```sql 
+USE sql_store;
+    
+SELECT  
+    o.order_id,
+    c.first_name
+FROM orders o
+NATURAL JOIN customers c
+```
