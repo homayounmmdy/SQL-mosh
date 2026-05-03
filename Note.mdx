@@ -415,3 +415,23 @@ FROM sql_hr.employees e
 LEFT JOIN sql_hr.employees m
     ON e.reports_to = m.employee_id
 ```
+
+## The USING Clause
+
+if the two side of ON is same we use USING like below and if one side 
+is different we can't use this syntax anymore
+
+```sql
+USE sql_store;
+
+SELECT
+    o.order_id,
+    c.first_name,
+    sh.name AS shipper
+FROM orders o
+JOIN customers c
+    -- ON o.customer_id = c.customer_id
+    USING (customer_id)
+LEFT JOIN shippers sh
+    USING (shipper_id)
+```
