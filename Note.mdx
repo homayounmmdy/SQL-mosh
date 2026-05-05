@@ -121,7 +121,7 @@ NOT : vice versa the condition
 
 ```sql
 SELECT * FROM customers
-WHERE birth_date > '1990-01-01' AND points > 1000 AND state = "VA"
+WHERE birth_date > '1990-01-01' AND points > 1000 AND state = 'VA'
 ```
 
 ```sql
@@ -482,14 +482,14 @@ SELECT
     order_date,
     'Active' As status
 FROM orders
-WHERE orders.order_date >= "2019-01-01"
+WHERE orders.order_date >= '2019-01-01'
 UNION
 SELECT
     order_id,
     order_date,
     'Archived' As status
 FROM orders
-WHERE orders.order_date < "2019-01-01"
+WHERE orders.order_date < '2019-01-01'
 ```
 
 ## Column Attribution
@@ -512,4 +512,13 @@ VALUES (
         'address',
         'city',
         'CA')
+```
+
+## Inserting multiple rows
+
+```sql 
+INSERT INTO shippers (name)
+VALUES ('Shipper1'),
+       ('Shipper2'),
+       ('Shipper3')
 ```
