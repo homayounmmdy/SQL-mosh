@@ -471,3 +471,24 @@ SELECT
 FROM customers c, products p
 ORDER BY c.first_name
 ```
+
+## Unions
+
+used to connect two rows together or combine two tables together
+
+```sql 
+SELECT
+    order_id,
+    order_date,
+    'Active' As status
+FROM orders
+WHERE orders.order_date >= "2019-01-01"
+UNION
+SELECT
+    order_id,
+    order_date,
+    'Archived' As status
+FROM orders
+WHERE orders.order_date < "2019-01-01"
+```
+
