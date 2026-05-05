@@ -500,3 +500,16 @@ WHERE orders.order_date < "2019-01-01"
 - PK : Primary Key
 - NM : Not NULL check this column should accept null value or not
 - AI : Auto increment often used for id let MYSQL engine insert value
+
+## Inserting a ROW 
+
+```SQL 
+INSERT INTO customers ( first_name, last_name, birth_date, address, city, state)
+VALUES (
+        'John',
+        'Smith',
+        '1990-01-01',
+        'address',
+        'city',
+        'CA')
+```
