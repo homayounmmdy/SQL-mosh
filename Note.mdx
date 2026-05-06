@@ -522,3 +522,20 @@ VALUES ('Shipper1'),
        ('Shipper2'),
        ('Shipper3')
 ```
+
+## Creating a Copy of table
+
+```sql 
+CREATE TABLE order_archived AS
+SELECT * FROM orders
+```
+
+we can filter and fill the table with the result 
+
+```sql 
+INSERT INTO orders_archived
+
+SELECT *
+FROM orders
+WHERE order_date < '2019-01-01'
+```
