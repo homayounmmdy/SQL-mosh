@@ -589,3 +589,13 @@ WHERE client_id IN
 WHERE state IN ('CA', 'NY')
 )
 ```
+
+## Delete Rows 
+
+```sql 
+DELETE FROM sql_invoicing.invoices
+WHERE client_id = (
+    SELECT * FROM sql_invoicing.clients
+    WHERE name = 'Mywork'
+)
+```
