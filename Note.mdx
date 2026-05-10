@@ -599,3 +599,24 @@ WHERE client_id = (
     WHERE name = 'Mywork'
 )
 ```
+
+## Aggregate Function
+
+> The count method show the numbers of not null elements but if you want to see all you have to use this 
+
+```sql 
+COUNT (*) AS total_records
+```
+
+```sql 
+SELECT
+    MAX(invoice_total) AS hights,
+    MIN(invoice_total) AS lowest,
+    AVG(invoice_total) AS average,
+    SUM(invoice_total) AS total,
+    COUNT(invoice_total) AS number_of_invoices,
+    COUNT(payment_date) AS count_of_payment,
+    COUNT(*) AS total_records
+FROM sql_invoicing.invoices
+```
+
