@@ -640,4 +640,18 @@ this is the order of items
 4. GROUP
 5. ORDER 
 
-d
+## The HAVING Clause
+
+- **WHERE** filters rows before grouping (works with GROUP BY).
+
+- **HAVING** filters groups after grouping (used with aggregate functions like SUM, COUNT).
+
+```sql 
+SELECT
+    client_id,
+    SUM(invoice_total) AS total_sales,
+    COUNT(*) AS number_of_invoces
+FROM sql_invoicing.invoices
+GROUP BY client_id
+HAVING total_sales > 500 AND number_of_invoces > 5
+```
