@@ -655,3 +655,17 @@ FROM sql_invoicing.invoices
 GROUP BY client_id
 HAVING total_sales > 500 AND number_of_invoces > 5
 ```
+
+## The ROLLUP Operator
+
+ROLLUP adds extra summary rows (subtotals and a grand total) to a GROUP BY result, rolling up from detailed to total.
+
+```sql
+SELECT
+    state,
+    city,
+    SUM(invoice_total) AS total_sales
+FROM sql_invoicing.invoices i
+JOIN sql_invoicing.clients c USING (client_id)
+GROUP BY state, city WITH ROLLUP
+```
