@@ -669,3 +669,15 @@ FROM sql_invoicing.invoices i
 JOIN sql_invoicing.clients c USING (client_id)
 GROUP BY state, city WITH ROLLUP
 ```
+
+## Subqueries
+
+```sql 
+SELECT *
+FROM products
+WHERE unit_price > (
+    SELECT  unit_price
+    FROM products
+    WHERE product_id = 3
+)
+```
