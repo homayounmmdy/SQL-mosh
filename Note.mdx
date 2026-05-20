@@ -728,3 +728,33 @@ WHERE invoice_total > ALL (
 )
 ```
 ALL is to compare with all values
+
+## The ANY keyword
+
+we also have any and some that is if is any or some of them are greater than 3
+
+like this example where clients with at least tow invoices
+
+```sql
+SELECT *
+FROM clients
+WHERE client_id = ANY (
+    SELECT client_id
+    FROM invoices
+    GROUP BY client_id
+    HAVING COUNT(*) >=2
+)
+```
+
+also we can do that with in as well 
+
+```sql
+SELECT *
+FROM clients
+WHERE client_id IN (
+    SELECT client_id
+    FROM invoices
+    GROUP BY client_id
+    HAVING COUNT(*) >=2
+)
+```
