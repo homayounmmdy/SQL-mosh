@@ -700,3 +700,31 @@ WHERE product_id NOT IN (
 Subqueries : Is more readable than Join
 
 if performance is same go into readability
+
+## The ALL Keywords 
+
+this show all invoices that are greater than 3
+
+```sql 
+USE sql_invoicing;
+
+SELECT * FROM invoices
+WHERE invoice_total > (
+    SELECT MAX(invoice_total)
+    FROM invoices
+    WHERE client_id = 3
+)
+```
+we can do the same with ALL keyword
+
+```sql
+USE sql_invoicing;
+
+SELECT * FROM invoices
+WHERE invoice_total > ALL (
+    SELECT invoice_total
+    FROM invoices
+    WHERE client_id = 3
+)
+```
+ALL is to compare with all values
