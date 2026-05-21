@@ -815,3 +815,17 @@ WHERE EXISTS(
 > For subquery that has return large result better to use EXIT
 > Because when we use EXIT it not return anything to outer query
 
+## Subqueries in the SELECT Clause
+
+```sql
+USE sql_invoicing;
+
+SELECT
+    invoice_id ,
+    invoice_total,
+    (SELECT AVG(invoice_total)
+     FROM invoices) AS invoice_average,
+    invoice_total - (SELECT invoice_average) AS difference
+FROM invoices
+```
+
