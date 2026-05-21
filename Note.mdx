@@ -758,3 +758,30 @@ WHERE client_id IN (
     HAVING COUNT(*) >=2
 )
 ```
+
+## Correlated Subqueries
+
+Select employees whose salary is above the average in their office
+
+this is the sudo code of it 
+
+``` 
+- for each employee
+    - calculate the avg salary for employee.office
+    - return the employee if salary > avg
+```
+
+this how we do it
+
+```sql
+USE sql_hr;
+
+SELECT * FROM employees e
+WHERE salary > (
+    SELECT AVG(salary)
+    FROM employees
+    WHERE office_id = e.office_id
+)
+```
+
+> correlated subqueries : is executed for each row in main query and sometime ca be slow based amount of data you have
