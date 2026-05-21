@@ -968,3 +968,31 @@ The `CONCAT` to concatenate two strings into one string
 SELECT CONCAT('first', 'name')
 ```
 
+## Date Function
+
+The `NOW` to get current time and also
+
+- CURDATE : for only current data
+- CURTIME : for only current time
+
+
+```sql
+SELECT NOW()
+```
+
+we can extract date like this to only show year
+we also have 
+
+- YEAR
+- MONTH
+- DAY
+- HOUR 
+- MINUTE
+- SECOND
+- DAYNAME (name of day like monday)
+- MONTHNAME (name of month like march)
+
+```sql
+SELECT YEAR(NOW())
+```
+
