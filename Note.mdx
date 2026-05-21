@@ -309,9 +309,9 @@ JOIN products p
     ON oi.product_id = p.product_id
 ```
 
-## Self Joins 
+## Self Joins
 
-```sql 
+```sql
 SELECT
     e.employee_id,
     e.first_name,
@@ -343,7 +343,7 @@ and it is really common to join 12 table in SQL
 
 ## Compound Join Conditions
 
-```sql 
+```sql
 SELECT *
 From order_items oi
 JOIN order_item_notes oin
@@ -353,27 +353,27 @@ JOIN order_item_notes oin
 
 ## Implicit Join Syntax
 
-do not use this syntax much it case cross join 
+do not use this syntax much it case cross join
 better to use explicit JOIN syntax
 
-```sql 
+```sql
 SELECT *
 From orders o , customers c
 WHERE o.customer_id = c.customer_id
 ```
 
-## Outer Join 
+## Outer Join
 
 when ever you write JOIN it mean INNER JOIN but it convert into JOIN
-for Outer Join we have 2 types left and right 
+for Outer Join we have 2 types left and right
 
-when we use left all of the in this example customers return whether this condition 
+when we use left all of the in this example customers return whether this condition
 is true or not
 
-when we use right all of the right side of order which is over default and if you want to see 
-all customer with right you need to swap the order 
+when we use right all of the right side of order which is over default and if you want to see
+all customer with right you need to swap the order
 
-```sql 
+```sql
 SELECT
     c.customer_id,
     c.first_name,
@@ -388,7 +388,7 @@ ORDER BY c.customer_id
 
 > as best practice avoid RIGHT JOIN and focus on left JOIN for better visual
 
-```sql 
+```sql
 SELECT
     c.customer_id,
     c.first_name,
@@ -402,9 +402,9 @@ LEFT JOIN shippers sh
 ORDER BY c.customer_id
 ```
 
-## Self Outer Joins 
+## Self Outer Joins
 
-```sql 
+```sql
 USE sql_hr;
 
 SELECT
@@ -418,7 +418,7 @@ LEFT JOIN sql_hr.employees m
 
 ## The USING Clause
 
-if the two side of ON is same we use USING like below and if one side 
+if the two side of ON is same we use USING like below and if one side
 is different we can't use this syntax anymore
 
 ```sql
@@ -436,24 +436,24 @@ LEFT JOIN shippers sh
     USING (shipper_id)
 ```
 
-## Natural Joins 
+## Natural Joins
 
-this is not used widely just be familiar with it basically combine 
+this is not used widely just be familiar with it basically combine
 common things but something produce unexpected results
 
-```sql 
+```sql
 USE sql_store;
-    
-SELECT  
+
+SELECT
     o.order_id,
     c.first_name
 FROM orders o
 NATURAL JOIN customers c
 ```
 
-## Cross Joins 
+## Cross Joins
 
-```sql 
+```sql
 SELECT
     c.first_name AS customer,
     p.name AS product
@@ -462,9 +462,9 @@ CROSS JOIN products p
 ORDER BY c.first_name
 ```
 
-you can simplify this like this 
+you can simplify this like this
 
-```sql 
+```sql
 SELECT
     c.first_name AS customer,
     p.name AS product
@@ -476,7 +476,7 @@ ORDER BY c.first_name
 
 used to connect two rows together or combine two tables together
 
-```sql 
+```sql
 SELECT
     order_id,
     order_date,
@@ -494,16 +494,16 @@ WHERE orders.order_date < '2019-01-01'
 
 ## Column Attribution
 
-- INT : integer number without anu float numbers 
+- INT : integer number without anu float numbers
 - VARCHAR(50) : variable character that hold 50 character as maximin and if user was 5 character it store 5
-- CHAR(50) : character that hold 50 character the main difference if the customer type 5 it will fill 45 of it with empty space 
+- CHAR(50) : character that hold 50 character the main difference if the customer type 5 it will fill 45 of it with empty space
 - PK : Primary Key
 - NM : Not NULL check this column should accept null value or not
 - AI : Auto increment often used for id let MYSQL engine insert value
 
-## Inserting a ROW 
+## Inserting a ROW
 
-```SQL 
+```SQL
 INSERT INTO customers ( first_name, last_name, birth_date, address, city, state)
 VALUES (
         'John',
@@ -516,7 +516,7 @@ VALUES (
 
 ## Inserting multiple rows
 
-```sql 
+```sql
 INSERT INTO shippers (name)
 VALUES ('Shipper1'),
        ('Shipper2'),
@@ -525,14 +525,14 @@ VALUES ('Shipper1'),
 
 ## Creating a Copy of table
 
-```sql 
+```sql
 CREATE TABLE order_archived AS
 SELECT * FROM orders
 ```
 
-we can filter and fill the table with the result 
+we can filter and fill the table with the result
 
-```sql 
+```sql
 INSERT INTO orders_archived
 
 SELECT *
@@ -542,7 +542,7 @@ WHERE order_date < '2019-01-01'
 
 ## Updating a Single Row
 
-```sql 
+```sql
 UPDATE sql_invoicing.invoices
 SET payment_total = 10 , payment_date = '2019-03-01'
 WHERE invoice_id = 1
@@ -554,7 +554,7 @@ you can also done calculation
 
 the syntax is same but you have to write more general condition
 
-```sql 
+```sql
 UPDATE sql_invoicing.invoices
 SET
     payment_total = invoice_total * 0.5 ,
@@ -564,7 +564,7 @@ WHERE client_id = 3
 
 ## Using Subqueries in Updates
 
-```sql 
+```sql
 UPDATE sql_invoicing.invoices
 SET
     payment_total = invoice_total * 0.5 ,
@@ -576,9 +576,9 @@ WHERE name = 'Myworks'
 )
 ```
 
-also you can use IN  
+also you can use IN
 
-```sql 
+```sql
 UPDATE sql_invoicing.invoices
 SET
     payment_total = invoice_total * 0.5 ,
@@ -590,9 +590,9 @@ WHERE state IN ('CA', 'NY')
 )
 ```
 
-## Delete Rows 
+## Delete Rows
 
-```sql 
+```sql
 DELETE FROM sql_invoicing.invoices
 WHERE client_id = (
     SELECT * FROM sql_invoicing.clients
@@ -602,13 +602,13 @@ WHERE client_id = (
 
 ## Aggregate Function
 
-> The count method show the numbers of not null elements but if you want to see all you have to use this 
+> The count method show the numbers of not null elements but if you want to see all you have to use this
 
-```sql 
+```sql
 COUNT (*) AS total_records
 ```
 
-```sql 
+```sql
 SELECT
     MAX(invoice_total) AS hights,
     MIN(invoice_total) AS lowest,
@@ -630,15 +630,15 @@ FROM sql_invoicing.invoices
 WHERE invoice_date >= '2019-07-01'
 GROUP BY client_id
 ORDER BY total_sales DESC
-``` 
+```
 
-this is the order of items 
+this is the order of items
 
 1. SELECT
 2. FROM
 3. WHERE
 4. GROUP
-5. ORDER 
+5. ORDER
 
 ## The HAVING Clause
 
@@ -646,7 +646,7 @@ this is the order of items
 
 - **HAVING** filters groups after grouping (used with aggregate functions like SUM, COUNT).
 
-```sql 
+```sql
 SELECT
     client_id,
     SUM(invoice_total) AS total_sales,
@@ -672,7 +672,7 @@ GROUP BY state, city WITH ROLLUP
 
 ## Subqueries
 
-```sql 
+```sql
 SELECT *
 FROM products
 WHERE unit_price > (
@@ -684,7 +684,7 @@ WHERE unit_price > (
 
 ### The IN Operator
 
-```sql 
+```sql
 USE sql_store;
 
 SELECT *
@@ -701,11 +701,11 @@ Subqueries : Is more readable than Join
 
 if performance is same go into readability
 
-## The ALL Keywords 
+## The ALL Keywords
 
 this show all invoices that are greater than 3
 
-```sql 
+```sql
 USE sql_invoicing;
 
 SELECT * FROM invoices
@@ -715,6 +715,7 @@ WHERE invoice_total > (
     WHERE client_id = 3
 )
 ```
+
 we can do the same with ALL keyword
 
 ```sql
@@ -727,6 +728,7 @@ WHERE invoice_total > ALL (
     WHERE client_id = 3
 )
 ```
+
 ALL is to compare with all values
 
 ## The ANY keyword
@@ -746,7 +748,7 @@ WHERE client_id = ANY (
 )
 ```
 
-also we can do that with in as well 
+also we can do that with in as well
 
 ```sql
 SELECT *
@@ -763,9 +765,9 @@ WHERE client_id IN (
 
 Select employees whose salary is above the average in their office
 
-this is the sudo code of it 
+this is the sudo code of it
 
-``` 
+```
 - for each employee
     - calculate the avg salary for employee.office
     - return the employee if salary > avg
@@ -798,7 +800,8 @@ WHERE client_id IN (
     SELECT DISTINCT client_id
     FROM invoices
 )
-``` 
+```
+
 also we can do the same with slightly different format
 
 ```sql
@@ -849,3 +852,43 @@ WHERE total_sales IS NOT NULL
 ```
 
 > USE this for simple queries
+
+## Numeric Functions
+
+we have `ROUND` in second argument specify the digits to round
+
+```sql
+SELECT ROUND (5.73 , 1)
+```
+
+we have `TRUNCATE` keep the amount digit set in second argument
+after decimal point and remove the rest in this example after 2 
+digit it remove 
+
+```sql
+SELECT TRUNCATE (5.7345 , 2)
+```
+
+The `CEILING` return smallest integer or equal to the number
+
+```sql
+SELECT CEILING (5.2)
+```
+
+The `FLOOR` return later or equal to that integer
+
+```sql
+SELECT FLOOR (5.2)
+```
+
+The `ABS` always return positive number
+
+```sql
+SELECT ABS (-5.2)
+```
+
+The `RAND` random number between 0 to 1
+
+```sql
+SELECT RAND()
+```
