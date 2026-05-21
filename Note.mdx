@@ -892,3 +892,79 @@ The `RAND` random number between 0 to 1
 ```sql
 SELECT RAND()
 ```
+
+## String Function
+
+The `LENGTH` return numbers of characters
+
+```sql
+SELECT LENGTH ('sky')
+```
+
+We have `UPPER` and `LOWER` to change case of character
+
+```sql
+SELECT UPPER ('Sky')
+
+SELECT LOWER ('Sky')
+```
+
+we have trims function to remove empty spaces that in data
+
+`LTRIM` : Left Trim
+`RTRIM` : Right Trim
+`TRIM` : for left and rights both side
+
+```sql
+SELECT TRIM ('    Sky   ')
+```
+
+we have `LEFT` that have two argument first is string and second 
+amount of character get from that value and have `RIGHT` that do opposite 
+of left
+
+```sql
+SELECT LEFT ('Kindergarten' , 4); 
+
+SELECT RIGHT ('Kindergarten' , 6);
+```
+
+The `SUBSTRING` that has 3 argument 
+
+1. the string
+2. where to start
+3. where to end (Optional if not provide it go up to end of string)
+
+and return that string
+
+```sql
+SELECT SUBSTRING ('Kindergarten' , 3, 5);
+```
+
+The `LOCATE` have 2 parameter
+
+1. what character or sequence of characters do you search and it show index and it not case-sensitive
+2. the string
+
+```sql
+SELECT LOCATE ('n','Kindergarten' );
+```
+
+if not exit is return 0
+
+The `REPLACE` have 3 argument
+
+1. the string
+2. which value to replace
+3. the new value for replace
+
+```sql
+SELECT REPLACE ('Kindergarten' , 'garten' , 'garden');
+```
+
+The `CONCAT` to concatenate two strings into one string
+
+```sql
+SELECT CONCAT('first', 'name')
+```
+
