@@ -785,3 +785,33 @@ WHERE salary > (
 ```
 
 > correlated subqueries : is executed for each row in main query and sometime ca be slow based amount of data you have
+
+## The EXIT Operator
+
+Task : Select clients that have an invoice
+
+```sql
+USE sql_invoicing;
+
+SELECT * FROM clients
+WHERE client_id IN (
+    SELECT DISTINCT client_id
+    FROM invoices
+)
+``` 
+also we can do the same with slightly different format
+
+```sql
+USE sql_invoicing;
+
+SELECT * FROM clients c
+WHERE EXISTS(
+    SELECT client_id
+    FROM invoices
+    WHERE client_id = c.client_id
+)
+```
+
+> For subquery that has return large result better to use EXIT
+> Because when we use EXIT it not return anything to outer query
+
