@@ -996,3 +996,27 @@ we also have
 SELECT YEAR(NOW())
 ```
 
+
+## Formatting Dates and Times
+
+The DATE_FORMAT the first is date and second is the format of it like this 
+example it is only show 2 digits of the year 
+
+```sql
+SELECT DATE_FORMAT(NOW() , "%y")
+```
+
+but if we use Capital Y it show full year 
+we have %m to display month and capital M to show Month name
+. we can also change the order as well and %d for day and %D for 
+third , fourth something like that 
+
+```sql
+SELECT DATE_FORMAT(NOW() , "%M %d %Y")
+```
+
+we have TIME_FORMAT but with different identifier for second argument
+
+```sql
+SELECT TIME_FORMAT(NOW() , "%H:%i %p")
+```
