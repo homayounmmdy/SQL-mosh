@@ -1020,3 +1020,37 @@ we have TIME_FORMAT but with different identifier for second argument
 ```sql
 SELECT TIME_FORMAT(NOW() , "%H:%i %p")
 ```
+
+## Calculating Dates and Times
+
+We have DATE_ADD the first argument is current and second is the amount we want to add 
+it can be a year or day or any other valid thing for backward use negative value
+
+```sql
+SELECT DATE_ADD(NOW() , INTERVAL 1 YEAR)
+
+SELECT DATE_ADD(NOW() , INTERVAL 1 DAY)
+
+SELECT DATE_ADD(NOW() , INTERVAL -1 YEAR)
+```
+
+also for backward you can use DATE_SUB as well instead of negative pass positive number
+
+
+```sql
+SELECT DATE_SUB(NOW() , INTERVAL 1 YEAR)
+```
+
+for calculating between two date we can use DATEDIFF and it only perform on date not hours 
+
+```sql
+SELECT DATEDIFF('2025-01-01' , '2025-01-05')
+```
+
+we have TIME_TO_SEC which show the amount of second to midnight for get different we subtract one 
+into another 
+
+```sql
+SELECT TIME_TO_SEC('09:02') - TIME_TO_SEC('09:00')
+```
+
