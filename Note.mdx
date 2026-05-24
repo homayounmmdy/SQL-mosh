@@ -1102,3 +1102,19 @@ SELECT
     ) AS category
 FROM orders
 ```
+
+## The CASE Operator
+
+```sql
+USE sql_store;
+
+SELECT
+    order_id,
+    CASE
+        WHEN YEAR(order_date) = YEAR(DATE_SUB(NOW(), INTERVAL 7 YEAR)) THEN 'Active'
+        WHEN YEAR(order_date) = YEAR(DATE_SUB(NOW(), INTERVAL 8 YEAR)) THEN 'Last Year'
+        WHEN YEAR(order_date) < YEAR(DATE_SUB(NOW(), INTERVAL 8 YEAR)) THEN 'Archived'
+        ELSE 'Future'
+    END AS category
+FROM orders
+```
