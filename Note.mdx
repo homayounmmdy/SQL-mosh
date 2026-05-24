@@ -1135,3 +1135,15 @@ FROM clients c
 JOIN invoices i USING (client_id)
 GROUP BY client_id, name
 ```
+
+## Altering or Dropping Views
+
+```sql
+DROP VIEW sales_by_client
+```
+
+you can create or replace like below
+
+```sql
+CREATE OR REPLACE VIEW sales_by_client AS
+```
