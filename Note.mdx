@@ -1080,3 +1080,25 @@ SELECT
 FROM orders
 ```
 
+## The IF function
+
+The syntax function is like below if expression success show first if not 
+show second 
+
+```
+IF(expression, first , second)
+```
+
+```sql
+USE sql_store;
+
+SELECT
+    order_id,
+    order_date,
+    IF(
+            YEAR(order_date) = YEAR(DATE_SUB(NOW(), INTERVAL 7 YEAR)),
+            'Active' ,
+            'Archived'
+    ) AS category
+FROM orders
+```
