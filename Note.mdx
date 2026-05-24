@@ -1054,3 +1054,29 @@ into another
 SELECT TIME_TO_SEC('09:02') - TIME_TO_SEC('09:00')
 ```
 
+
+## The IFNULL and COALESCE Functions
+
+The IFNULL show something else rather than NULL for user
+
+```sql
+USE sql_store;
+
+SELECT
+    order_id,
+    IFNULL(shipper_id , 'Not assigned') AS shipper
+FROM orders
+```
+
+we have COALESCE that first check value if not it check comment if that null
+it return the third defined value
+
+```sql
+USE sql_store;
+
+SELECT
+    order_id,
+    COALESCE(shipper_id, comments , 'Not assigned') AS shipper
+FROM orders
+```
+
