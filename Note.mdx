@@ -1147,3 +1147,45 @@ you can create or replace like below
 ```sql
 CREATE OR REPLACE VIEW sales_by_client AS
 ```
+
+## Updating View
+
+If you don't have any of these in view you can refer as an updatable view
+
+- DISTINCT
+- Aggregate Functions (MIN , MAX , SUM)
+- GROUP BY / HAVING
+- UNION
+
+```sql
+USE sql_invoicing;
+
+CREATE OR REPLACE VIEW invoices_with_balance AS
+SELECT
+    invoice_id,
+    number,
+    client_id,
+    invoice_total,
+    payment_total,
+    invoice_total - payment_total AS balance,
+    invoice_date,
+    due_date,
+    payment_date
+FROM invoices
+WHERE (invoice_total - payment_total) > 0
+```
+
+this how to delete something from view
+
+```sql
+DELETE FROM invoices_with_balance
+WHERE invoice_id = 1
+```
+
+this how to update the view
+
+```sql
+UPDATE invoices_with_balance
+SET due_date = DATE_ADD(due_date, INTERVAL 2 DAY)
+WHERE invoice_id = 2
+```
