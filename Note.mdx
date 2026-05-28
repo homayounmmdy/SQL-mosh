@@ -1215,3 +1215,22 @@ A place that contain SQL queries we use it for
 - Store and organize SQL
 - Faster execution
 - Data Security
+
+## Creating a Stored Procedure
+
+```sql
+
+DELIMITER  $$
+CREATE PROCEDURE get_clients()
+BEGIN
+    SELECT * FROM clients;
+END$$
+
+DELIMITER ;
+```
+
+we can call this like below
+
+```sql
+CALL get_clients()
+```
