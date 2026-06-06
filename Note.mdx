@@ -862,8 +862,8 @@ SELECT ROUND (5.73 , 1)
 ```
 
 we have `TRUNCATE` keep the amount digit set in second argument
-after decimal point and remove the rest in this example after 2 
-digit it remove 
+after decimal point and remove the rest in this example after 2
+digit it remove
 
 ```sql
 SELECT TRUNCATE (5.7345 , 2)
@@ -919,17 +919,17 @@ we have trims function to remove empty spaces that in data
 SELECT TRIM ('    Sky   ')
 ```
 
-we have `LEFT` that have two argument first is string and second 
-amount of character get from that value and have `RIGHT` that do opposite 
+we have `LEFT` that have two argument first is string and second
+amount of character get from that value and have `RIGHT` that do opposite
 of left
 
 ```sql
-SELECT LEFT ('Kindergarten' , 4); 
+SELECT LEFT ('Kindergarten' , 4);
 
 SELECT RIGHT ('Kindergarten' , 6);
 ```
 
-The `SUBSTRING` that has 3 argument 
+The `SUBSTRING` that has 3 argument
 
 1. the string
 2. where to start
@@ -975,18 +975,17 @@ The `NOW` to get current time and also
 - CURDATE : for only current data
 - CURTIME : for only current time
 
-
 ```sql
 SELECT NOW()
 ```
 
 we can extract date like this to only show year
-we also have 
+we also have
 
 - YEAR
 - MONTH
 - DAY
-- HOUR 
+- HOUR
 - MINUTE
 - SECOND
 - DAYNAME (name of day like monday)
@@ -996,20 +995,19 @@ we also have
 SELECT YEAR(NOW())
 ```
 
-
 ## Formatting Dates and Times
 
-The DATE_FORMAT the first is date and second is the format of it like this 
-example it is only show 2 digits of the year 
+The DATE_FORMAT the first is date and second is the format of it like this
+example it is only show 2 digits of the year
 
 ```sql
 SELECT DATE_FORMAT(NOW() , "%y")
 ```
 
-but if we use Capital Y it show full year 
+but if we use Capital Y it show full year
 we have %m to display month and capital M to show Month name
-. we can also change the order as well and %d for day and %D for 
-third , fourth something like that 
+. we can also change the order as well and %d for day and %D for
+third , fourth something like that
 
 ```sql
 SELECT DATE_FORMAT(NOW() , "%M %d %Y")
@@ -1023,7 +1021,7 @@ SELECT TIME_FORMAT(NOW() , "%H:%i %p")
 
 ## Calculating Dates and Times
 
-We have DATE_ADD the first argument is current and second is the amount we want to add 
+We have DATE_ADD the first argument is current and second is the amount we want to add
 it can be a year or day or any other valid thing for backward use negative value
 
 ```sql
@@ -1036,24 +1034,22 @@ SELECT DATE_ADD(NOW() , INTERVAL -1 YEAR)
 
 also for backward you can use DATE_SUB as well instead of negative pass positive number
 
-
 ```sql
 SELECT DATE_SUB(NOW() , INTERVAL 1 YEAR)
 ```
 
-for calculating between two date we can use DATEDIFF and it only perform on date not hours 
+for calculating between two date we can use DATEDIFF and it only perform on date not hours
 
 ```sql
 SELECT DATEDIFF('2025-01-01' , '2025-01-05')
 ```
 
-we have TIME_TO_SEC which show the amount of second to midnight for get different we subtract one 
-into another 
+we have TIME_TO_SEC which show the amount of second to midnight for get different we subtract one
+into another
 
 ```sql
 SELECT TIME_TO_SEC('09:02') - TIME_TO_SEC('09:00')
 ```
-
 
 ## The IFNULL and COALESCE Functions
 
@@ -1082,8 +1078,8 @@ FROM orders
 
 ## The IF function
 
-The syntax function is like below if expression success show first if not 
-show second 
+The syntax function is like below if expression success show first if not
+show second
 
 ```
 IF(expression, first , second)
@@ -1192,15 +1188,15 @@ WHERE invoice_id = 2
 
 ## THE WITH OPTION CHECK Clause
 
-if we have condition in our pervious view that if the condition 
-failed it will not show that for preventing this we could add 
+if we have condition in our pervious view that if the condition
+failed it will not show that for preventing this we could add
 at the bottom of the view
 
 ```sql
 WITH CHECK OPTION
 ```
 
-this prevent removing 
+this prevent removing
 
 ## Other Benefits of Views
 
@@ -1210,7 +1206,7 @@ this prevent removing
 
 ## Stored Procedures
 
-A place that contain SQL queries we use it for 
+A place that contain SQL queries we use it for
 
 - Store and organize SQL
 - Faster execution
@@ -1243,7 +1239,7 @@ DROP PROCEDURE IF EXISTS  get_clients
 
 ## Parameters
 
-```sql 
+```sql
 DROP PROCEDURE IF EXISTS  get_clients_by_state;
 
 DELIMITER  $$
@@ -1279,7 +1275,7 @@ END$$
 DELIMITER ;
 ```
 
-we can refactor it like this 
+we can refactor it like this
 
 ```sql
 DROP PROCEDURE IF EXISTS  get_clients_by_state;
@@ -1298,7 +1294,7 @@ DELIMITER ;
 
 ## Parameter Validation
 
-write validation as minimum as possible 
+write validation as minimum as possible
 
 ```sql
 
@@ -1347,16 +1343,16 @@ END$$
 DELIMITER ;
 ```
 
-## Variable 
+## Variable
 
-we one type if called User or session variable that will be as long 
+we one type if called User or session variable that will be as long
 as user terminate the SQL
 
 ```sql
 SET @invoices_count = 0
 ```
 
-we also have another type called Local variables and it be free after 
+we also have another type called Local variables and it be free after
 function execution
 
 ```sql
@@ -1439,4 +1435,18 @@ BEGIN
 END $$
 
 DELIMITER ;
+```
+
+## Viewing Triggers
+
+we use this way to see the trigger
+
+```sql
+SHOW TRIGGERS
+```
+
+we also can filter like this as well
+
+```sql
+SHOW TRIGGERS LIKE 'payments%'
 ```
