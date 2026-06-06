@@ -1527,3 +1527,22 @@ for example bank that both operation must be successful
 - Consistency
 - Isolation
 - Durability
+
+## Creating Transactions
+
+```sql
+USE sql_store;
+
+START TRANSACTION;
+
+INSERT INTO orders (customer_id , order_date, status)
+VALUES ( 1, '2026-06-06', 1);
+
+INSERT INTO order_items
+VALUES (LAST_INSERT_ID(), 1, 1, 1);
+
+COMMIT;
+```
+
+we can also add bottom at ROLLBACK to change back all change if transaction is failed
+
