@@ -1492,3 +1492,25 @@ DO BEGIN
 END $$
 DELIMITER ;
 ```
+
+## Viewing and Dropping Events
+
+we use this to see events 
+
+```sql
+SHOW EVENTS
+```
+
+for drop we do like this 
+
+```sql
+DROP EVENT IF EXISTS yearly_delete_stale_audit_rows
+```
+
+we also have ALTER to edit the event 
+
+or disable like below
+
+```sql
+ALTER EVENT yearly_delete_stale_audit_rows ENABLE
+```
