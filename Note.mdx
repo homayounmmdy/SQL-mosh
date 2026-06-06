@@ -1456,3 +1456,15 @@ SHOW TRIGGER LIKE 'payments%'
 ```sql
 DROP TRIGGER IF EXISTS payments_after_insert;
 ```
+
+## Using Triggers for Auditing
+
+we can use triggers for storing logs
+
+```sql
+INSERT INTO payments_audit
+VALUES (NEW.client_id, NEW.date , NEW.amount , 'Insert', NOW())
+
+INSERT INTO payments_audit
+VALUES (OLD.client_id, OLD.date , OLD.amount , 'Delete', NOW())
+```
