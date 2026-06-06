@@ -1442,11 +1442,17 @@ DELIMITER ;
 we use this way to see the trigger
 
 ```sql
-SHOW TRIGGERS
+SHOW TRIGGER
 ```
 
 we also can filter like this as well
 
 ```sql
-SHOW TRIGGERS LIKE 'payments%'
+SHOW TRIGGER LIKE 'payments%'
+```
+
+## Dropping Triggers
+
+```sql
+DROP TRIGGER IF EXISTS payments_after_insert;
 ```
