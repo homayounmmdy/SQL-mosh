@@ -1556,3 +1556,15 @@ is two user get one data at once and want to edit
 - Dirty Reads
 - Non-repeating Reads
 - Phantom Reads
+
+## Transaction Isolation Levels
+
+![](./images/concurrency_problems_table.png.png);
+
+
+this how to see and change Isolation levels 
+
+```sql
+SHOW VARIABLES LIKE 'transaction_isolation';
+SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+```
