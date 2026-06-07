@@ -1593,29 +1593,29 @@ COMMIT ;
 
 ## Deadlocks
 
-It happens when two or more transactions each hold a lock on a resource that 
-the other needs to proceed , creating a circular wait. For example,  Transaction A 
+It happens when two or more transactions each hold a lock on a resource that
+the other needs to proceed , creating a circular wait. For example, Transaction A
 locks Row 1 and wants Row 2, while Transaction B locks Row 2 and wants Row 1.
 Neither can finish because each is waiting for the other to release its lock.
 
 The database automatically detects this deadlock and terminates one transaction (the "victim"),
 rolling back its work, so the other can complete
 
-## Data Types 
+## Data Types
 
-- String Types 
+- String Types
 - Numeric Types
 - Date and Time Types
-- Blob Types 
+- Blob Types
 - Spatial Types
 
-### String Types 
+### String Types
 
 - CHAR - fixed-length
-    - 50 for short string
+  - 50 for short string
 - VARCHAR - max : 65,535 character (~64KB)
-    255 for medium length strings
-- MEDIUMTEXT - max 16MB 
+  255 for medium length strings
+- MEDIUMTEXT - max 16MB
 - LONGTEXT - max 4GB
 - TINYTEXT - max 255 bytes
 - TEXT - max : 64KB
@@ -1626,3 +1626,17 @@ English uses 1
 European Middle-eastern uses 2
 Asian uses 3
 
+### Integer Types
+
+- TINYINT: 1b [-128 , 127]
+- UNSIGNED TINYINT: [0 , 255]
+- SMALLINT : 2b [-32k , 32k]
+- MEDIUMINTINT : 3b [-8M , 8M]
+- INT : 4b [-2B , 2B]
+- BIGINT 8b [9Z , 9Z]
+
+#### Zerofill
+
+- INT(4) => 0001
+
+> Use the smallest data type that suits your needs.
