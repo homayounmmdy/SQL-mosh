@@ -1495,19 +1495,19 @@ DELIMITER ;
 
 ## Viewing and Dropping Events
 
-we use this to see events 
+we use this to see events
 
 ```sql
 SHOW EVENTS
 ```
 
-for drop we do like this 
+for drop we do like this
 
 ```sql
 DROP EVENT IF EXISTS yearly_delete_stale_audit_rows
 ```
 
-we also have ALTER to edit the event 
+we also have ALTER to edit the event
 
 or disable like below
 
@@ -1561,10 +1561,32 @@ is two user get one data at once and want to edit
 
 ![](./images/concurrency_problems_table.png.png);
 
-
-this how to see and change Isolation levels 
+this how to see and change Isolation levels
 
 ```sql
 SHOW VARIABLES LIKE 'transaction_isolation';
 SET GLOBAL TRANSACTION ISOLATION LEVEL SERIALIZABLE ;
+```
+
+## READ UNCOMMITTED Isolation Level
+
+this is lowest level and you may experience so many problems
+
+```sql
+Use sql_store;
+SET GLOBAL TRANSACTION ISOLATION LEVEL READ UNCOMMITTED ;
+SELECT points
+FROM customers
+WHERE customer_id = 1
+```
+
+and this second user
+
+```sql
+Use sql_store;
+START TRANSACTION ;
+UPDATE customers
+SET points = 20
+WHERE customer_id = 1;
+COMMIT ;
 ```
