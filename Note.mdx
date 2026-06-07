@@ -1590,3 +1590,13 @@ SET points = 20
 WHERE customer_id = 1;
 COMMIT ;
 ```
+
+## Deadlocks
+
+It happens when two or more transactions each hold a lock on a resource that 
+the other needs to proceed , creating a circular wait. For example,  Transaction A 
+locks Row 1 and wants Row 2, while Transaction B locks Row 2 and wants Row 1.
+Neither can finish because each is waiting for the other to release its lock.
+
+The database automatically detects this deadlock and terminates one transaction (the "victim"),
+rolling back its work, so the other can complete
