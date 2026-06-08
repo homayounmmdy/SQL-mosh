@@ -1686,3 +1686,38 @@ Problems with storing files in a database
 - slower backups
 - Performance problems
 - More code to read/write images
+
+### JSON Type 
+
+Lightweight format for storing and transferring data over the Internet.
+
+```sql
+UPDATE products
+SET properties = JSON_OBJECT(
+        'weight', 10,
+        'dimensions', JSON_ARRAY(1, 2, 3),
+        'manufacturer', JSON_OBJECT('name', 'sony')
+)
+WHERE product_id = 1
+```
+
+```sql
+SELECT product_id , properties ->> '$.manufacturer.name'
+FROM products
+WHERE product_id = 1;
+```
+
+and this how to update and add more
+
+```sql
+UPDATE products
+SET properties = JSON_SET(
+        properties,
+        '$.weight', 20,
+        '$.age', 10
+                 )
+WHERE product_id = 1
+```
+
+and we have JSON_REMOVE to remove data
+
