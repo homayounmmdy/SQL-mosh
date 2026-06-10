@@ -1891,3 +1891,15 @@ ALTER TABLE orders
         ON DELETE NO ACTION
 
 ```
+
+## Character Sets and Collations
+
+the same thing you set for your html pages utf8 is support all language 
+for latin it store 1 bitte for middle east 2 bite and for asian language 3 
+
+for example if you use VARCHAR(10) and you 1 million record it actually store
+30 M but if you specifically for latin language it would be 10 M we can do it like this 
+
+```sql
+CHARACTER SET latin1
+```
