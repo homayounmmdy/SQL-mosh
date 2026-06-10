@@ -1644,28 +1644,27 @@ Asian uses 3
 ### Fixed-point and Floating-point Types
 
 - DECIMAL (p,s) example DECIMAL(0,2) => 1234567.89
-    - All belows are the same
-    - DEC
-    - NUMERIC
-    - FIXED
+  - All belows are the same
+  - DEC
+  - NUMERIC
+  - FIXED
 
-
-and we have 
+and we have
 
 - FLOAT 4B
 - DOUBLE 8B
 
-### Boolean Types 
+### Boolean Types
 
 - BOOL
 - BOOLEAN
 
-### Enum and Set Types 
+### Enum and Set Types
 
-for situation that we want limit range of values like S , M , L only from this 
+for situation that we want limit range of values like S , M , L only from this
 we use Enum and we have SET that work the same as Enum
 
-### Date and Time Types 
+### Date and Time Types
 
 - DATE
 - TIME
@@ -1673,12 +1672,12 @@ we use Enum and we have SET that work the same as Enum
 - TIMESTAMP 4b (up to 2038)
 - YEAR
 
-### Blob Types 
+### Blob Types
 
-- TINYBLOB      225b
-- BLOB          65KB
-- MEDIUMBLOB    16MB
-- LONGBLOB      4GB
+- TINYBLOB 225b
+- BLOB 65KB
+- MEDIUMBLOB 16MB
+- LONGBLOB 4GB
 
 Problems with storing files in a database
 
@@ -1687,7 +1686,7 @@ Problems with storing files in a database
 - Performance problems
 - More code to read/write images
 
-### JSON Type 
+### JSON Type
 
 Lightweight format for storing and transferring data over the Internet.
 
@@ -1734,10 +1733,9 @@ and we have JSON_REMOVE to remove data
 
 ### Modelling Tools
 
-- Microsoft Visio 
+- Microsoft Visio
 - draw.io
 - LucidCharts
-
 
 ![](./images/conceptual_models.png);
 
@@ -1753,7 +1751,7 @@ we have 3 relationships
 
 ![](./images/logical_modells.png);
 
-## Physical Model 
+## Physical Model
 
 is way to implement the database with which technology you wants
 
@@ -1761,18 +1759,18 @@ is way to implement the database with which technology you wants
 
 ## Primary Keys
 
-a unique and identifier for each table to share data and stuff like that we mostly 
-use id that has auto increment 
+a unique and identifier for each table to share data and stuff like that we mostly
+use id that has auto increment
 
 ## Foreign Key
 
-for example in our example the Student is a parent and enrollment is foreign because we 
-can't have enrollment without student and we connect both into each other we have key called 
+for example in our example the Student is a parent and enrollment is foreign because we
+can't have enrollment without student and we connect both into each other we have key called
 student_id that is foreign key because the value is came by student model id.
 
 ## Normalization
 
-it basically follow some rules to prevent duplication it has 7 form but for most of applications 
+it basically follow some rules to prevent duplication it has 7 form but for most of applications
 you need only 3 of it
 
 ### First Normal Form (1NF)
@@ -1783,9 +1781,8 @@ The point is turn that data into single table and create relationship with other
 
 ## Link Table
 
-for example in our design we create another table called course_tag then connect that 
+for example in our design we create another table called course_tag then connect that
 to tags and courses
-
 
 ![](./images/link_table.png);
 
@@ -1793,7 +1790,7 @@ to tags and courses
 
 > Every **table** should describe **one entity** and every column in that table should describe that entity.
 
-for example in our example the name of instructor because it can teach several course and it name duplicate in 
+for example in our example the name of instructor because it can teach several course and it name duplicate in
 multiply places so we have to put it in another table
 
 ### Third Normal Form (3NF)
@@ -1806,7 +1803,7 @@ like this example that we can remove full_name because we can calculate that by 
 
 ## Creating and Dropping Databases
 
-```sql 
+```sql
 CREATE DATABASE IF NOT EXISTS sql_store2;
 ```
 
@@ -1814,7 +1811,7 @@ CREATE DATABASE IF NOT EXISTS sql_store2;
 DROP DATABASE IF  EXISTS sql_store2;
 ```
 
-## Creating Tables 
+## Creating Tables
 
 ```sql
 CREATE DATABASE IF NOT EXISTS sql_store2;
@@ -1829,7 +1826,7 @@ CREATE TABLE customers
 );
 ```
 
-or we can do like this instead of removing 
+or we can do like this instead of removing
 
 ```sql
 CREATE DATABASE IF NOT EXISTS sql_store2;
@@ -1842,4 +1839,14 @@ CREATE TABLE IF NOT EXISTS customers
     email       VARCHAR(255) NOT NULL UNIQUE
 );
 
+```
+
+## Altering Tables
+
+```sql
+ALTER TABLE customers
+    ADD last_name VARCHAR(50) NOT NULL AFTER first_name,
+    ADD city VARCHAR(50) NOT NULL ,
+    MODIFY COLUMN first_name VARCHAR(50) DEFAULT '',
+    DROP points;
 ```
