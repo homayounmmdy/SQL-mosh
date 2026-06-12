@@ -1925,6 +1925,7 @@ ENGINE = InooDB
 as default it check all of them
 
 ![](./images/create_index_for_customers.png);
+
 we can use indexes to speed up and don't check each one by one and it save in memory
 
 ### Cost of Indexes
@@ -2078,3 +2079,10 @@ accessing the actual table. For example, if you often run
 `CREATE INDEX idx_users_covering ON users (id, name)` lets the database
 find the row using `id` and immediately get `name` from the index,
 avoiding a separate table lookup.
+
+## index Maintenance
+
+
+![](./images/duplicate_redundant_indexes.png);
+
+> Before creating new indexes , check the existing ones.
