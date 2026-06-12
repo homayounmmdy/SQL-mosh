@@ -1918,3 +1918,22 @@ ENGINE = InooDB
 
 > Indexes speed up our queries
 
+## Indexes
+
+
+![](./images/query_custoemr_table.png);
+
+as default it check all of them
+
+![](./images/create_index_for_customers.png);
+we can use indexes to speed up and don't check each one by one and it save in memory
+
+### Cost of Indexes
+
+- Increase the database
+- Slow down the writes
+
+> Reserve indexes for **performance critical** queries
+
+> Design indexes based on your **queries** , not your tables.
+
