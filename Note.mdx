@@ -2025,7 +2025,7 @@ WHERE state = 'CA' AND points > 1000;
 ### order of columns
 
 - Frequently used columns
-- High cardinality columns 
+- High cardinality columns
 - Take your queries into account
 
 ## When indexes are ignored
@@ -2042,14 +2042,14 @@ EXPLAIN
     WHERE points > 1000;
 ```
 
-at this code it check all rows 1010 
+at this code it check all rows 1010
 
 ```sql
 EXPLAIN SELECT customer_id FROM customers
 WHERE points + 10 > 2010;
-``` 
+```
 
-but this only check 4 rows 
+but this only check 4 rows
 
 ```sql
 EXPLAIN SELECT customer_id FROM customers
@@ -2063,8 +2063,18 @@ EXPLAIN SELECT customer_id FROM customers ORDER BY state;
 ```
 
 but rare to do this and using always in most situation is not suitable
-and you can see the cost of your operation like this 
+and you can see the cost of your operation like this
 
 ```sql
 SHOW STATUS LIKE 'last_query_cost'
 ```
+
+## Covering Indexes
+
+A covering index is an index that contains all the columns needed to satisfy
+a query, so the database can return results directly from the index without
+accessing the actual table. For example, if you often run
+`SELECT id, name FROM users WHERE id = 123`, creating
+`CREATE INDEX idx_users_covering ON users (id, name)` lets the database
+find the row using `id` and immediately get `name` from the index,
+avoiding a separate table lookup.
