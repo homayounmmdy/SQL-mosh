@@ -1894,11 +1894,11 @@ ALTER TABLE orders
 
 ## Character Sets and Collations
 
-the same thing you set for your html pages utf8 is support all language 
-for latin it store 1 bitte for middle east 2 bite and for asian language 3 
+the same thing you set for your html pages utf8 is support all language
+for latin it store 1 bitte for middle east 2 bite and for asian language 3
 
 for example if you use VARCHAR(10) and you 1 million record it actually store
-30 M but if you specifically for latin language it would be 10 M we can do it like this 
+30 M but if you specifically for latin language it would be 10 M we can do it like this
 
 ```sql
 CHARACTER SET latin1
@@ -1914,12 +1914,11 @@ ALTER TABLE customers
 ENGINE = InooDB
 ```
 
-# Indexing for High Performance 
+# Indexing for High Performance
 
 > Indexes speed up our queries
 
 ## Indexes
-
 
 ![](./images/query_custoemr_table.png);
 
@@ -1939,7 +1938,7 @@ we can use indexes to speed up and don't check each one by one and it save in me
 
 ## Creating Indexes
 
-by this way we can see how mySQL run this 
+by this way we can see how mySQL run this
 
 ```sql
 EXPLAIN SELECT customer_id FROM customers WHERE state = 'CA';
@@ -1955,7 +1954,7 @@ CREATE INDEX idx_state ON customers (state);
 
 now after creating index the type become **ref** amd iot only check 112 rows
 
-## Viewing Indexes 
+## Viewing Indexes
 
 ```sql
 SHOW INDEXES IN customers;
@@ -1969,7 +1968,7 @@ ANALYZE TABLE customers;
 
 ## Prefix indexes
 
-for string varchar and text and stuff like that get so much space we can prefix our 
+for string varchar and text and stuff like that get so much space we can prefix our
 values to just store few of them for performance
 
 ```sql
@@ -1982,5 +1981,27 @@ SELECT
 FROM customers;
 ```
 
-in our example 5 and 10 dose not get any improvement while we double the space so we go 
+in our example 5 and 10 dose not get any improvement while we double the space so we go
 with 5
+
+## Full-text Indexes
+
+this low of searching
+
+```sql
+USE sql_blog;
+SELECT *
+FROM posts
+WHERE title LIKE '%react redux%' OR
+      body LIKE '%react redux%'
+```
+
+use for powerful searches
+
+```sql
+CREATE FULLTEXT INDEX idx_title_body ON posts (title, body);
+
+SELECT *
+FROM posts
+WHERE MATCH(title, body) AGAINST('react redux');
+```
