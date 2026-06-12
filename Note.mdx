@@ -2152,3 +2152,10 @@ TO john;
 SHOW GRANTS FOR john;
 ```
 
+## Dropping Privileges
+
+```sql
+REVOKE CREATE VIEW
+ON sql_store.*
+FROM moon_app;
+```
