@@ -1966,3 +1966,21 @@ for more accurate result we add this as well
 ```sql
 ANALYZE TABLE customers;
 ```
+
+## Prefix indexes
+
+for string varchar and text and stuff like that get so much space we can prefix our 
+values to just store few of them for performance
+
+```sql
+CREATE INDEX idx_lastname ON customers (last_name(5));
+
+SELECT
+    COUNT(DISTINCT LEFT(last_name, 1)),
+    COUNT(DISTINCT LEFT(last_name, 5)),
+    COUNT(DISTINCT LEFT(last_name, 10))
+FROM customers;
+```
+
+in our example 5 and 10 dose not get any improvement while we double the space so we go 
+with 5
