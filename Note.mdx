@@ -1955,3 +1955,14 @@ CREATE INDEX idx_state ON customers (state);
 
 now after creating index the type become **ref** amd iot only check 112 rows
 
+## Viewing Indexes 
+
+```sql
+SHOW INDEXES IN customers;
+```
+
+for more accurate result we add this as well
+
+```sql
+ANALYZE TABLE customers;
+```
