@@ -2082,7 +2082,26 @@ avoiding a separate table lookup.
 
 ## index Maintenance
 
-
 ![](./images/duplicate_redundant_indexes.png)
 
 > Before creating new indexes , check the existing ones.
+
+## Creating a User
+
+this how to restrict user IP
+
+```sql
+CREATE USER john@localhost
+```
+
+if you want for all of your sub domain we do like this
+
+```sql
+CREATE USER john@'%.mysite.com'
+```
+
+and you can set password for user like this
+
+```sql
+CREATE USER john IDENTIFIED BY '1234'
+```
